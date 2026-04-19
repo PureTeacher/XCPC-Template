@@ -1,3 +1,52 @@
+# 我的青春算竞物语果然有问题 XCPC 模板
+
+## 完整目录
+- [数据结构](#数据结构)
+  - [ST表-wzy](#ST表-wzy)
+  - [线段树-wzy](#线段树-wzy)
+
+---
+
+# 数据结构
+
+## ST表-wzy
+```cpp
+#include<iostream>
+#include<cstdio>
+#define MAXN 100010
+using namespace std;
+int n,m;
+int a[MAXN];
+int f[MAXN][30];
+int lg[MAXN];
+int main()
+{
+	scanf("%d%d",&n,&m);
+	for(int i=1;i<=n;i++)
+	{
+		scanf("%d",&a[i]);
+		f[i][0]=a[i];
+	}
+	for(int i=2;i<=n;i++)
+		lg[i]=lg[i>>1]+1;
+	for(int j=1;j<=lg[n];j++)
+		for(int i=1;i+(1<<j)-1<=n;i++)
+			f[i][j]=max(f[i][j-1],f[i+(1<<(j-1))][j-1]);
+	for(int i=1;i<=m;i++)
+	{
+		int l,r;
+		scanf("%d%d",&l,&r);
+		int len=lg[r-l+1];
+		printf("%d\n",max(f[l][len],f[r-(1<<len)+1][len]));
+	}
+	return 0;
+}
+```
+
+---
+
+## 线段树-wzy
+```cpp
 #include<iostream>
 #include<cstdio>
 #define LL long long
@@ -89,3 +138,6 @@ int main()
 	}
 	return 0;
 }
+```
+
+---

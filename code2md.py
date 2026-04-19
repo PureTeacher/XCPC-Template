@@ -1,7 +1,7 @@
 import os
 
-# 你的代码根目录，无需修改
-root_dir = r"C:\Users\18354\Desktop\cppcode\templete"
+# 获取当前脚本所在目录作为根目录
+root_dir = os.path.dirname(os.path.abspath(__file__))
 # 最终输出的MD文件
 output_md = os.path.join(root_dir, "XCPC模板.md")
 
@@ -14,7 +14,7 @@ for dirpath, dirnames, filenames in os.walk(root_dir):
     # 获取当前子文件夹名称（一级标题）
     folder_name = os.path.basename(dirpath)
     # 跳过最外层根目录本身
-    if folder_name == "templete":
+    if dirpath == root_dir:
         continue
 
     # 筛选当前文件夹内所有cpp代码文件
