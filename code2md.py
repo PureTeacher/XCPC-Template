@@ -3,7 +3,7 @@ import os
 # 你的代码根目录，无需修改
 root_dir = r"C:\Users\18354\Desktop\cppcode\templete"
 # 最终输出的MD文件
-output_md = os.path.join(root_dir, "竞赛模板_带完整可跳转目录版.md")
+output_md = os.path.join(root_dir, "XCPC模板.md")
 
 # 存储目录、正文内容
 toc_list = []
@@ -16,7 +16,7 @@ for dirpath, dirnames, filenames in os.walk(root_dir):
     # 跳过最外层根目录本身
     if folder_name == "templete":
         continue
-    
+
     # 筛选当前文件夹内所有cpp代码文件
     cpp_file_list = [file for file in filenames if file.endswith(".cpp")]
     if len(cpp_file_list) == 0:
@@ -56,15 +56,15 @@ for dirpath, dirnames, filenames in os.walk(root_dir):
 # ========== 统一写入最终完整MD文件 ==========
 with open(output_md, "w", encoding="utf-8") as md_file:
     # 文档大标题
-    md_file.write("# Sin_qwq C++ ICPC 竞赛模板全集\n\n")
+    md_file.write("# 我的青春算竞物语果然有问题 XCPC 模板\n\n")
     # 顶部完整可跳转目录
-    md_file.write("## 📑 完整目录\n")
+    md_file.write("## 完整目录\n")
     md_file.write("\n".join(toc_list))
     md_file.write("\n\n---\n")
     # 正文全部内容
     md_file.write("\n".join(main_content))
 
-print("="*50)
-print("✅ 导出完成！")
-print(f"📄 文件保存路径：{output_md}")
-print("="*50)
+print("=" * 50)
+print("导出完成！")
+print(f"文件保存路径：{output_md}")
+print("=" * 50)
